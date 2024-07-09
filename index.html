@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Job Platform Desing</title>
+</head>
+<body>
+    
+    <div class="sidebar">
+        <a href="#">Works</a>
+
+        <div class="side-nav">
+
+            <div class="item" active>
+                <i class='bx bx-search-alt-2'></i>
+                <a href="#">Home</a>
+            </div>
+
+            <div class="item">
+                <i class='bx bx-notification'></i>
+                <a href="#">Notificatons</a>
+            </div>
+
+            <div class="item">
+                <i class='bx bx-briefcase' ></i>
+                <a href="#">My Works</a>
+            </div>
+
+            <div class="item">
+                <i class='bx bx-bookmarks'></i>
+                <a href="#">Saved Jobs</a>
+            </div>
+
+            <div class="item">
+                <i class='bx bxs-cog'></i>
+                <a href="#">Settings</a>
+            </div>
+        </div>
+
+        <div class="side-profile">
+            <div class="info">
+                <img src="./Images/me.jpg" alt="Abraham">
+                <a href="#">Abraham.Talent</a>
+                <p>Web Developer</p>
+            </div>
+            <div class="skills">
+                <h5>Skills and Expertise</h5>
+                <div class="skill-tags">
+                    <div class="item">
+                        <p>Web Developer</p>
+                    </div>
+                    <div class="item">
+                        <p>Illustrator</p>
+                    </div>
+                    <div class="item">
+                        <p>Photoshop</p>
+                    </div>
+                    <div class="item">
+                        <p>HTML/CSS</p>
+                    </div>
+                </div>
+            </div>
+            <button>View Profile</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            <button id="menuToggle"><i class='bx bx-menu'></i></button>
+            <div class="search">
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search for job">
+            </div>
+            <div class="city">
+                <i class='bx bx-location-plus' ></i>
+                <input type="text" placeholder="Enter city, state, or region">
+            </div>
+            <button>Search</button>
+            <i class='bx bx-bell'></i>
+            <div class="user-info">
+                <img src="./Images/me.jpg" alt="">
+                <div>
+                    <a href="#">
+                        Abraham.Web
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <p>abraham.com</p>
+                </div>
+            </div>
+        </div>
+
+       <div class="main">
+            <div class="content">
+                <div class="header">
+                    <h4>Oppotunities matching your skills <span>380</span> </h4>
+                    <p>Here are jobs that fit your skill set</p>
+                </div>
+
+                <div class="job-cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="job-info">
+                                <i class='bx bxl-apple'></i>
+                                <div>
+                                    <h5>Apple <span>| Just Now </span></h5>
+                                    <a href="#">Junior UI Designer</a>
+                                    <p>San Francisco, USA</p>
+                                </div>
+                            </div>
+                            <i class='bx bx-bookmarks'></i>
+                        </div>
+                        <div class="card-tags">
+                            <a href="#">Remote</a>
+                            <a href="#">Freelance</a>
+                        </div>
+                        <div class="card-dosc">
+                            We are seeking a Junior UI Designer with a passion for creating
+                            intuitive user interfaces.
+                            Join our dynamic team at Apple and contribute to innovative design projects.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="job-info">
+                                <i class='bx bxl-microsoft'></i>
+                                <div>
+                                    <h5>Microsoft <span>| Just Now </span></h5>
+                                    <a href="#">Junior Software Engineer</a>
+                                    <p>Seattle, USA</p>
+                                </div>
+                            </div>
+                            <i class='bx bx-bookmarks'></i>
+                        </div>
+                        <div class="card-tags">
+                            <a href="#">Full Time</a>
+                            <a href="#">On site</a>
+                        </div>
+                        <div class="card-dosc">
+                            Microsoft is looking for a Junior software Engineer to Developer
+                            and maintain software applications.
+                            If you have a keen interest in coding and problem solving, apply now.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="job-info">
+                                <i class='bx bxl-google'></i>
+                                <div>
+                                    <h5>Google <span>| Just Now </span></h5>
+                                    <a href="#">Junior Data Analyst</a>
+                                    <p>Mountain View, USA</p>
+                                </div>
+                            </div>
+                            <i class='bx bx-bookmarks'></i>
+                        </div>
+                        <div class="card-tags">
+                            <a href="#">Part Time</a>
+                            <a href="#">Remote</a>
+                        </div>
+                        <div class="card-dosc">
+                            Google is hiring a Junior Data Scientist to analyze large
+                            datasets and provide actionable insights.
+                            The idea; cadidate should be proficient in data analysis tools and techniques.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="job-info">
+                                <i class='bx bxl-amazon'></i>
+                                <div>
+                                    <h5>Amazon <span>| Today</span></h5>
+                                    <a href="#">Junior Cloud Engineer</a>
+                                    <p>Seattle, USA</p>
+                                </div>
+                            </div>
+                            <i class='bx bx-bookmarks'></i>
+                        </div>
+                        <div class="card-tags">
+                            <a href="#">Full Time</a>
+                            <a href="#">Remote</a>
+                        </div>
+                        <div class="card-dosc">
+                            Amazon is looking for a Junior Cloud Engineer to join our AWS team. You will be responsible
+                            for supporting cloud infrastructure and services, ensuring optimal perforance and security.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="job-info">
+                                <i class='bx bxl-apple'></i>
+                                <div>
+                                    <h5>Tesla <span>| Today </span></h5>
+                                    <a href="#">Junior Robotics Engineer</a>
+                                    <p>Palo Alta, USA</p>
+                                </div>
+                            </div>
+                            <i class='bx bx-bookmarks'></i>
+                        </div>
+                        <div class="card-tags">
+                            <a href="#">Internship</a>
+                            <a href="#">On Site</a>
+                        </div>
+                        <div class="card-dosc">
+                            Tesla is seeking a Junior Robotics Engineer to work on the development and maintenace of
+                            robotic systems, If you are passionte about robotics and automation, join our innovative team.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="job-info">
+                                <i class='bx bxl-facebook'></i>
+                                <div>
+                                    <h5>Facebook <span>| This Week </span></h5>
+                                    <a href="#">Junior Product Manager</a>
+                                    <p>Monlo Park, USA</p>
+                                </div>
+                            </div>
+                            <i class='bx bx-bookmarks'></i>
+                        </div>
+                        <div class="card-tags">
+                            <a href="#">Freelance</a>
+                            <a href="#">On Site</a>
+                        </div>
+                        <div class="card-dosc">
+                            Join Facebook as a Junior Product Manager. We are looking for someone who
+                            can assist in product development and managemant, ensuring high-quality user experience.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filters">
+                <div class="header">
+                    <h3>Job Filter</h3>
+                    <a href="#">Clear all</a>
+                </div>
+
+                <div class="item">
+                    <div class="title">
+                        <h4>Time</h4>
+                        <a href="#">Clear</a>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="today">
+                            <label for="today">Just Now</label>
+                        </div>
+                        <p>50 Jobs</p>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="weekly">
+                            <label for="weekly">Weekly</label>
+                        </div>
+                        <p>150 Jobs</p>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="monthly">
+                            <label for="monthly">Monthly</label>
+                        </div>
+                        <p>200 Jobs</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="title">
+                        <h4>Experience</h4>
+                        <a href="#">Clear</a>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="trainer">
+                            <label for="trainer">Entry</label>
+                        </div>
+                        <p>50 Jobs</p>
+                    </div> 
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="junior">
+                            <label for="junior">Junior</label>
+                        </div>
+                        <p>100 Jobs</p>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="middle">
+                            <label for="midlle">Middle</label>
+                        </div>
+                        <p>100 Jobs</p>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="senior">
+                            <label for="senior">Senior</label>
+                        </div>
+                        <p>50 Jobs</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="title">
+                        <h4>Job Type</h4>
+                        <a href="#">Clear</a>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="fulltime">
+                            <label for="fulltime">Full Time</label>
+                        </div>
+                        <p>100 Jobs</p>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="parttimr">
+                            <label for="partime">Part Time</label>
+                        </div>
+                        <p>50 Jobs</p>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="contract">
+                            <label for="contract">Contract</label>
+                        </div>
+                        <p>50 Jobs</p>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="title">
+                        <h4>Time</h4>
+                        <a href="#">Clear</a>
+                    </div>
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="onsite">
+                            <label for="onsite">On Site</label>
+                        </div>
+                        <p>50 Jobs</p>
+                    </div>
+
+                    <div class="location">
+                        <i class='bx bx-location-plus' ></i>
+                        <input type="text" placeholder="Search location">
+                    </div>
+
+                    <div class="checkbox">
+                        <div>
+                            <input type="checkbox" name="remote">
+                            <label for="remote">Remote</label>
+                        </div>
+                        <p>100 Jobs</p>
+                    </div>
+                </div>
+            </div>    
+        </div> 
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
