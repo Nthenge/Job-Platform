@@ -321,7 +321,7 @@ body{
     line-height: 18px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     overflow: hidden;
     height: calc(18px * 3);
 }

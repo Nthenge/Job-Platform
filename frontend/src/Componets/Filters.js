@@ -1,15 +1,17 @@
+import {BrowserRouter as Link} from "react-router-dom"
+
 const Filters = () => {
     return (
         <div className="filters">
                         <div className="header">
                             <h3>Job Filter</h3>
-                            <a href="#">Clear all</a>
+                            <Link to="#">Clear all</Link>
                         </div>
 
                         <div className="item">
                             <div className="title">
                                 <h4>Time</h4>
-                                <a href="#">Clear</a>
+                                <Link to="#">Clear</Link>
                             </div>
                             <div className="checkbox">
                                 <div>
@@ -37,7 +39,7 @@ const Filters = () => {
                         <div className="item">
                             <div className="title">
                                 <h4>Experience</h4>
-                                <a href="#">Clear</a>
+                                <Link to="#">Clear</Link>
                             </div>
                             <div className="checkbox">
                                 <div>
@@ -72,7 +74,7 @@ const Filters = () => {
                         <div className="item">
                             <div className="title">
                                 <h4>Job Type</h4>
-                                <a href="#">Clear</a>
+                                <Link to="#">Clear</Link>
                             </div>
                             <div className="checkbox">
                                 <div>
@@ -100,7 +102,7 @@ const Filters = () => {
                         <div className="item">
                             <div className="title">
                                 <h4>Time</h4>
-                                <a href="#">Clear</a>
+                                <Link to="#">Clear</Link>
                             </div>
                             <div className="checkbox">
                                 <div>
@@ -110,10 +112,10 @@ const Filters = () => {
                                 <p>50 Jobs</p>
                             </div>
 
-                            {/* <div className="location">
+                            <div className="location">
                                 <i className='bx bx-location-plus' ></i>
                                 <input type="text" placeholder="Search location"/>
-                            </div> */}
+                            </div>
 
                             <div className="checkbox">
                                 <div>

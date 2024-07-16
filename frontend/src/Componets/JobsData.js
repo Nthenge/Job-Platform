@@ -1,26 +1,20 @@
-import {useEffect, useState} from "react"
-import {Link} from 'react-router-dom'
+import {BrowserRouter as Link} from 'react-router-dom'
 import Filters from "./Filters";
 import SearchBar from "./SearchBar";
 
 const JobsData = ({jobs}) => {
     const getJobType = (job) => {
-        switch(job.contract_time || job.contract_type){
+        switch (job.contract_time || job.contract_type) {
             case "full_time":
-                return "Fulltime"
-                break;
+                return "Fulltime";
             case "permanent":
-                return "Permanent"
-                break;
+                return "Permanent";
             case "remote":
-                return "Remote"
-                break;
+                return "Remote";
             case "contract":
-                return "Contract"
-                break;
+                return "Contract";
             default:
-                return "Read in details"
-                break;
+                return "Read in details";
         }
     }
 
@@ -34,7 +28,7 @@ const JobsData = ({jobs}) => {
                         </div>
                         {
                             !jobs || jobs.length === 0 ? <p>Loading, please wait...</p> : (
-                                <div className="job-cards">
+                            <div className="job-cards">
                             {jobs.map((job,index) => (
                                 <div className="card" key= {index}>
                                     <div className="card-header">
@@ -42,7 +36,7 @@ const JobsData = ({jobs}) => {
                                             <i className={job.icon}></i>
                                             <div>
                                                 <h5>{job.company.display_name} <span>| Posted on {new Date(job.created).toLocaleString()} </span></h5>
-                                                <a to={job.redirect_url} target="_blank">{job.title}</a>
+                                                <Link to={job.redirect_url} target="_blank">{job.title}</Link>
                                                 <p>
                                                     {
                                                     job.location.display_name    
@@ -53,11 +47,11 @@ const JobsData = ({jobs}) => {
                                         <i className='bx bx-bookmarks'></i>
                                     </div>
                                     <div className="card-tags">
-                                        <a to={job.redirect_url}>
+                                        <Link to={job.redirect_url}>
                                             {
                                                getJobType(job)                 
                                             }
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="card-dosc">
                                     {job.description}

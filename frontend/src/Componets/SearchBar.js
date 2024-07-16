@@ -1,7 +1,6 @@
 import myImage from "../Images/me.jpg";
 
 const SearchBar = ({ entryInfo = { firstInput: "", secondInput: "" }, handleInputs, fetchJobs}) => {
-    console.log(entryInfo.firstInput)
     return (
         <div className="nav">
                 <button id="menuToggle"><i className='bx bx-menu'></i></button>
@@ -29,6 +28,7 @@ const SearchBar = ({ entryInfo = { firstInput: "", secondInput: "" }, handleInpu
                 </div>
 
                 <button onClick={fetchJobs}>Search</button>
+                
                 <i className='bx bx-bell bx-tada'></i>
                 <div className="user-info">
                     <img src={myImage} alt=""/>
