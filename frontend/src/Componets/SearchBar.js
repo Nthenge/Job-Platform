@@ -31,7 +31,7 @@ const SearchBar = ({ entryInfo = { firstInput: "", secondInput: "" }, handleInpu
                 
                 <i className='bx bx-bell bx-tada'></i>
                 <div className="user-info">
-                    <img src={myImage} alt=""/>
+                    <img src={myImage} alt="abraham"/>
                     <div>
                     <a href={`${process.env.PUBLIC_URL}/Resume.pdf`} download="Resume.pdf">
                         Resume
