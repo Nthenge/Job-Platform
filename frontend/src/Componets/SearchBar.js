@@ -8,22 +8,22 @@ const SearchBar = ({ entryInfo = { firstInput: "", secondInput: "" }, handleInpu
                 <div className="search">
                     <i className='bx bx-search'></i>
                     <input 
+                    onChange={handleInputs}
                     type="text" 
                     placeholder="Search for job eg. React"
                     name="firstInput"
-                    defaultValue={entryInfo.firstInput || ""}
-                    onChange={handleInputs}
+                    value={entryInfo.firstInput || ""}
                     />
                 </div>
 
                 <div className="city">
                     <i className='bx bx-location-plus' ></i>
                     <input 
+                    onChange={handleInputs}
                     type="text" 
                     placeholder="Enter city, state, or region"
                     name="secondInput"
-                    defaultValue={entryInfo.secondInput || ""}
-                    onChange={handleInputs}
+                    value={entryInfo.secondInput || ""}
                     />
                 </div>
 
