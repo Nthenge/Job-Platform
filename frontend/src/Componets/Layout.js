@@ -1,11 +1,11 @@
 import Sidebar from './Sidebar';
-import JobsData from './JobsData';
+import Main from './Main';
 
 const Layout = () => {
   return (
     <div className="layout">
       <Sidebar />
-      <JobsData />
+      <Main />
     </div>
   );
 };

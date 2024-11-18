@@ -1,42 +1,54 @@
 import {BrowserRouter as Link} from "react-router-dom"
 
-const Filters = () => {
+const Filters = ({handleTimeFilterChange}) => {
     return (
-        <div className="filters">
-                        <div className="header">
+            <div className="filters">
+                <div className="header">
                             <h3>Job Filter</h3>
                             <Link to="#">Clear all</Link>
-                        </div>
+                </div>
 
-                        <div className="item">
+                <div className="item">
                             <div className="title">
                                 <h4>Time</h4>
                                 <Link to="#">Clear</Link>
                             </div>
                             <div className="checkbox">
                                 <div>
-                                    <input type="checkbox" name="today"/>
+                                    <input 
+                                    type="checkbox" 
+                                    name="today"
+                                    onChange={() => handleTimeFilterChange("today")}
+                                    />
                                     <label htmlFor="today">Just Now</label>
                                 </div>
                                 <p>50 Jobs</p>
                             </div>
                             <div className="checkbox">
                                 <div>
-                                    <input type="checkbox" name="weekly"/>
+                                    <input 
+                                    type="checkbox" 
+                                    name="weekly"
+                                    onChange={handleTimeFilterChange("week")}
+                                    />
                                     <label htmlFor="weekly">Weekly</label>
                                 </div>
                                 <p>150 Jobs</p>
                             </div>
                             <div className="checkbox">
                                 <div>
-                                    <input type="checkbox" name="monthly"/>
+                                    <input 
+                                    type="checkbox" 
+                                    name="monthly"
+                                    onChange={handleTimeFilterChange("month")}
+                                    />
                                     <label htmlFor="monthly">Monthly</label>
                                 </div>
                                 <p>200 Jobs</p>
                             </div>
-                        </div>
+                </div>
 
-                        <div className="item">
+                <div className="item">
                             <div className="title">
                                 <h4>Experience</h4>
                                 <Link to="#">Clear</Link>
@@ -69,9 +81,9 @@ const Filters = () => {
                                 </div>
                                 <p>50 Jobs</p>
                             </div>
-                        </div>
+                </div>
 
-                        <div className="item">
+                <div className="item">
                             <div className="title">
                                 <h4>Job Type</h4>
                                 <Link to="#">Clear</Link>
@@ -97,9 +109,9 @@ const Filters = () => {
                                 </div>
                                 <p>50 Jobs</p>
                             </div>
-                        </div>
+                </div>
                         
-                        <div className="item">
+                <div className="item">
                             <div className="title">
                                 <h4>Time</h4>
                                 <Link to="#">Clear</Link>
@@ -124,9 +136,9 @@ const Filters = () => {
                                 </div>
                                 <p>100 Jobs</p>
                             </div>
-                        </div>
-                    </div>
-    )
+                </div>
+            </div>
+            )
 }
 
 export default Filters

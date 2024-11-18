@@ -12,9 +12,9 @@
     display: flex;
 }
 
-a{
+.a{
     text-decoration: none;
-    color: #111;
+    color: #fff;
     font-size: 14px;
 }
 
@@ -24,7 +24,7 @@ p{
 
 body{
     display: flex;
-    height: 100%;
+    height: 100vh;
 }
 
 .sidebar{
@@ -37,7 +37,7 @@ body{
     transition: all 0.3s ease;
 }
 
-.sidebar > a{
+.sidebar > .a{
     font-size: 24px;
     color: #eee;
     font-weight: 500;
@@ -58,7 +58,7 @@ body{
     cursor: pointer;
 }
 
-.sidebar .side-nav .item a{
+.sidebar .side-nav .item .a{
     color: #a4a8ac;
     transition: all 0.3s ease;
 }
@@ -97,7 +97,7 @@ body{
     object-fit: cover;
     border-radius: 50%;
 }
-.sidebar .side-profile .info a{
+.sidebar .side-profile .info .a{
     font-weight: bold;
     margin-top: 8px;
 }
@@ -107,24 +107,6 @@ body{
     color: #666869;
     margin: 6px 40px; 
 }
-
-/* does not work from here */
-.sidebar .side-profile .skills .skills-tags{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
-}
-
-.sidebar .side-profile .skills .skills-tags .item{
-    padding: 6px;
-    background: #e7e7e7;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: 500;
-    color: #666869;
-}
-/* to here */
 
 .sidebar .side-profile button{
     margin-top: 16px;
@@ -138,7 +120,7 @@ body{
 }
 
 .container{
-    flex: 8;
+    flex: 9;
     padding: 28px 40px 20px 24px;
 }
 
@@ -183,6 +165,23 @@ body{
     cursor: pointer;
     border-radius: 8px;
 }
+ 
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.blinking {
+    animation: blink 0.5s linear;
+}
+
 
 .container .nav > button#menuToggle{
     display: none;
@@ -210,6 +209,14 @@ body{
     border-radius: 50%;
     object-fit: cover;
 }
+
+.loading_message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 /* start of cards styling */
 
 .container .main{
@@ -292,7 +299,7 @@ body{
     color: #a4a8ac;
 }
 
-.container .main .content .job-cards .card .card-header .job-info a{
+.container .main .content .job-cards .card .card-header .job-info .a{
     font-weight: bold;
     font-size: 13px;
     margin-top: 6px;
@@ -308,7 +315,7 @@ body{
     gap: 18px;
 }
 
-.container .main .content .job-cards .card .card-tags a{
+.container .main .content .job-cards .card .card-tags .a{
     font-size: 13px;
     background: #f2f2f2;
     padding: 5px;
@@ -321,7 +328,7 @@ body{
     line-height: 18px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     overflow: hidden;
     height: calc(18px * 3);
 }
@@ -342,7 +349,7 @@ body{
 }
 
 .container .main .filters a,
-.container .main .filters .item .title a{
+.container .main .filters .item .title .a{
     color: #ca3844;
     font-size: 13px;
     font-weight: bold;

@@ -3,40 +3,40 @@ import { BrowserRouter as Link } from "react-router-dom";
 const Sidebar = () => {
     return (
         <div className="sidebar">
-            <a to="#">JOBS</a>
+            <Link className = "a" to="#">JOBS</Link>
 
             <div className="side-nav">
 
-                <div className="item" active>
+                <div className="item">
                     <i className='bx bx-search-alt-2'></i>
-                    <a to="#">Home</a>
+                    <Link className = "a" to="#">Home</Link>
                 </div>
 
                 <div className="item">
                     <i className='bx bx-notification'></i>
-                    <a to="#">Notificatons</a>
+                    <Link className = "a" to="#">Notifications</Link>
                 </div>
 
                 <div className="item">
                     <i className='bx bx-briefcase' ></i>
-                    <a to="#">My Works</a>
+                    <Link className = "a" to="#">My Works</Link>
                 </div>
 
                 <div className="item">
                     <i className='bx bx-bookmarks'></i>
-                    <a to="#">Saved Jobs</a>
+                    <Link className = "a" to="#">Saved Jobs</Link>
                 </div>
 
                 <div className="item">
                     <i className='bx bxs-cog'></i>
-                    <a to="#">Settings</a>
+                    <Link className = "a" to="#">Settings</Link>
                 </div>
             </div>
 
             <div className="side-profile">
                 <div className="info">
                     <img src={myImage} alt="Abraham"/>
-                    <a to="#">Abraham.com</a>
+                    <a href="#">Abraham.com</a>
                     <p>Portfolio</p>
                 </div>
                 <div className="skills">
