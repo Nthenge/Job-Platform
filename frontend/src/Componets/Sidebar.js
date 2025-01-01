@@ -3,7 +3,9 @@ import { BrowserRouter as Link } from "react-router-dom";
 const Sidebar = () => {
     return (
         <div className="sidebar">
-            <Link className = "a" to="#">JOBS</Link>
+            <div className="title_Jobs">
+                <Link className = "a" to="#">JOBS</Link>
+            </div>
 
             <div className="side-nav">
 
@@ -26,21 +28,17 @@ const Sidebar = () => {
                     <i className='bx bx-bookmarks'></i>
                     <Link className = "a" to="#">Saved Jobs</Link>
                 </div>
-
-                <div className="item">
-                    <i className='bx bxs-cog'></i>
-                    <Link className = "a" to="#">Settings</Link>
-                </div>
             </div>
 
             <div className="side-profile">
                 <div className="info">
                     <img src={myImage} alt="Abraham"/>
+                    <br/>
                     <a href="#">Abraham.com</a>
-                    <p>Portfolio</p>
                 </div>
+
                 <div className="skills">
-                    <h5>Skills and Expertise</h5>
+                    <h5>Skills & Expertise</h5>
                     <div className="skill-tags">
                         <div className="item">
                             <p>Web Developer</p>
@@ -56,9 +54,14 @@ const Sidebar = () => {
                         </div>
                     </div>
                 </div>
-                <button>View Profile</button>
+
+                <div className="sidebar-btn">
+                    <button>View Profile</button>
+                </div>
+            
+            </div>
+
         </div>
-    </div>
     )
 }
 
