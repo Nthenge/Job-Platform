@@ -22,7 +22,7 @@ const Main = () => {
 
     const fetchJobs = async () => {
         try {
-            const response = await fetch(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=b602d1c4&app_key=9d5c5da0fa724f9c43233223ec49ed77&results_per_page=10&what=${entryInfo.firstInput}&where=${entryInfo.secondInput}`);
+            const response = await fetch(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=b602d1c4&app_key=9d5c5da0fa724f9c43233223ec49ed77&results_per_page=9&what=${entryInfo.firstInput}&where=${entryInfo.secondInput}`);
             if (!response.ok) {
                 throw new Error('Network error');
             }

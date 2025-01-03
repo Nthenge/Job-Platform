@@ -102,14 +102,12 @@ img{
     font-weight: 400;
     border: none;
     outline: none;
-    background-color: rgb(34, 20, 20);
-    color: #fff;
+    background-color: rgb(235, 231, 231);
+    color: black;
 }
 
 .sidebar .side-profile .sidebar-btn button:hover{
-    width: 125px;
-    height: 55px;
-    background-color: rgb(40, 26, 26);
+    background-color: rgb(245, 241, 241);
     transition: 0.2s ease;
 }
 
@@ -152,6 +150,13 @@ img{
     outline: none;
     border: none;
     border-radius: 10px;
+    background-color: rgb(235, 231, 231);
+    cursor: pointer;
+}
+
+.nav button:hover{
+    background-color: rgb(245, 241, 241);
+    transition: 0.2s ease;
 }
 
 .nav i{
@@ -170,3 +175,18 @@ img{
     justify-items: center;
     gap: 10px;
 }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 16px; 
+    margin: 16px 0; 
+    background-color: #fff;
+    line-clamp: 3;
+    width: 20em;
+  }
