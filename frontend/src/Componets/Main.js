@@ -71,14 +71,16 @@ const Main = () => {
 
     return (
         <div className="container">
-            <SearchBar
-                fetchJobs={fetchJobs}
-                entryInfo={entryInfo}
-                handleInputs={handleInputs}
-            />
-            <div className="main">
+            <div>
+                <SearchBar
+                    fetchJobs={fetchJobs}
+                    entryInfo={entryInfo}
+                    handleInputs={handleInputs}
+                />
+                
                 <div className="content">
                     <div className="header">
+                        
                         <h4><span>{jobs ? jobs.length : 0}</span> opportunities matching your skills.</h4>
                     </div>
                     {
@@ -130,6 +132,9 @@ const Main = () => {
                         )
                     }
                 </div>
+            </div>
+
+            <div className="main">
                 <Filters
                     handleTimeFilterChange = {handleTimeFilterChange}
                 />
