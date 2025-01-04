@@ -190,3 +190,36 @@ img{
     line-clamp: 3;
     width: 20em;
   }
+
+  .filters{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 10rem;
+    height: 100vh;
+    font-weight: 400;
+    font-size: 15px;
+    padding: 20px;
+  }
+
+  .filters .item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh / 4);
+  }
+
+  .filters .item .title, .filters .item .h4{
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .filters label{
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px;
+  }
+
+  .filters input:checked{
+    background-color: black;
+  }
