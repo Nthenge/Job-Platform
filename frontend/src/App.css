@@ -121,6 +121,19 @@ img{
     height: 100vh;
 }
 
+.container .main-data{
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    width: inherit;
+}
+
+.container .main-data .content .job-cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .nav{
     display: flex;
     flex-direction: row;
@@ -176,11 +189,21 @@ img{
     gap: 10px;
 }
 
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: inherit;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .card {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -188,7 +211,16 @@ img{
     margin: 16px 0; 
     background-color: #fff;
     line-clamp: 3;
-    width: 20em;
+    width: 23em;
+    height: 13rem;
+  } 
+
+  .card-desc {
+    display: -webkit-box; 
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
   }
 
   .filters{

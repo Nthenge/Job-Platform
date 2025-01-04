@@ -71,7 +71,8 @@ const Main = () => {
 
     return (
         <div className="container">
-            <div>
+
+            <div className="main-data">
                 <SearchBar
                     fetchJobs={fetchJobs}
                     entryInfo={entryInfo}
