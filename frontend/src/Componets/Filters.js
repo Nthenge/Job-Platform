@@ -69,13 +69,6 @@ const Filters = ({handleTimeFilterChange}) => {
                             </div>
                             <div className="checkbox">
                                 <div>
-                                    <input type="checkbox" name="middle"/>
-                                    <label htmlFor="midlle">Middle</label>
-                                </div>
-                                <p>100 Jobs</p>
-                            </div>
-                            <div className="checkbox">
-                                <div>
                                     <input type="checkbox" name="senior"/>
                                     <label htmlFor="senior">Senior</label>
                                 </div>
@@ -108,33 +101,6 @@ const Filters = ({handleTimeFilterChange}) => {
                                     <label htmlFor="contract">Contract</label>
                                 </div>
                                 <p>50 Jobs</p>
-                            </div>
-                </div>
-                        
-                <div className="item">
-                            <div className="title">
-                                <h4>Time</h4>
-                                <Link to="#">Clear</Link>
-                            </div>
-                            <div className="checkbox">
-                                <div>
-                                    <input type="checkbox" name="onsite"/>
-                                    <label htmlFor="onsite">On Site</label>
-                                </div>
-                                <p>50 Jobs</p>
-                            </div>
-
-                            <div className="location">
-                                <i className='bx bx-location-plus' ></i>
-                                <input type="text" placeholder="Search location"/>
-                            </div>
-
-                            <div className="checkbox">
-                                <div>
-                                    <input type="checkbox" name="remote"/>
-                                    <label htmlFor="remote">Remote</label>
-                                </div>
-                                <p>100 Jobs</p>
                             </div>
                 </div>
             </div>
