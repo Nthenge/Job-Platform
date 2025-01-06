@@ -20,7 +20,7 @@ img{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 100vh;
+    height: 100%;
 }
 
 .sidebar .title_Jobs{
@@ -212,7 +212,7 @@ img{
     background-color: #fff;
     line-clamp: 3;
     width: 23em;
-    height: 13rem;
+    height: 12rem;
   } 
 
   .card-desc {
