@@ -1,6 +1,6 @@
 import {BrowserRouter as Link} from "react-router-dom"
 
-const Filters = ({handleTimeFilterChange}) => {
+const Filters = ({handleTimeFilterChange, jobTypes}) => {
     return (
             <div className="filters">
                 <div className="header">

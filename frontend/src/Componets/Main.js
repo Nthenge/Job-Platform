@@ -11,6 +11,7 @@ const Main = () => {
         firstInput: "",
         secondInput: ""
     });
+    const [jobTypes, setJobTypes] = useState([]);
 
     const handleInputs = (e) => {
         const { name, value } = e.target;
@@ -28,6 +29,9 @@ const Main = () => {
             }
             const data = await response.json();
             setJobs(data.results);
+
+            const types = Array.from(new Set(data.results.map(job => job.contract_time || job.contract_type)));
+            setJobTypes(types);
         } catch (error) {
             console.error('Error fetching jobs:', error);
         }
@@ -138,6 +142,7 @@ const Main = () => {
             <div className="main">
                 <Filters
                     handleTimeFilterChange = {handleTimeFilterChange}
+                    jobTypes = {jobTypes}
                 />
             </div>
         </div>
