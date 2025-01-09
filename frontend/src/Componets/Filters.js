@@ -1,6 +1,12 @@
 import {BrowserRouter as Link} from "react-router-dom"
 
 const Filters = ({handleTimeFilterChange, jobTypes}) => {
+
+    const uniqueJobTypes = jobTypes.slice(0, 1);
+    function filterJobsByType(){
+        return 
+    }
+
     return (
             <div className="filters">
                 <div className="header">
@@ -79,15 +85,27 @@ const Filters = ({handleTimeFilterChange, jobTypes}) => {
                 <div className="item">
                             <div className="title">
                                 <h4>Job Type</h4>
-                                <Link to="#">Clear</Link>
+                                <Link to="#" onClick={() => filterJobsByType("")}>Clear</Link>
                             </div>
-                            <div className="checkbox">
-                                <div>
-                                    <input type="checkbox" name="fulltime"/>
-                                    <label htmlFor="fulltime">Full Time</label>
-                                </div>
-                                <p>100 Jobs</p>
-                            </div>
+                            {
+                                uniqueJobTypes.map((type, index)=>{
+                                    return (
+                                        <div key={index} className="checkbox">
+                                        <div>
+                                            <input 
+                                            type="radio" 
+                                            name="fulltime"
+                                            value={type}
+                                            onChange={() => filterJobsByType(type)}/>
+                                            <label htmlFor="fulltime">{type}</label>
+                                        </div>
+                                        <p>100 Jobs</p>
+                                    </div>
+                                    )
+                                })
+                            }
+                            
+                            
                             <div className="checkbox">
                                 <div>
                                     <input type="checkbox" name="parttimr"/>

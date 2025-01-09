@@ -4,14 +4,15 @@ import { useState } from "react";
 
 const Main = () => {
 
+    const [filteredJobs, setFilteredJobs] = useState([]);
+    const [selectedJobType, setSelectedJobType] = useState("");
     const [jobs, setJobs] = useState([]);
     const [timeFilter, setTimeFilter] = useState("");
-
+    const [jobTypes, setJobTypes] = useState([]);
     const [entryInfo, setEntryInfo] = useState({
         firstInput: "",
         secondInput: ""
     });
-    const [jobTypes, setJobTypes] = useState([]);
 
     const handleInputs = (e) => {
         const { name, value } = e.target;
@@ -72,6 +73,17 @@ const Main = () => {
     const handleTimeFilterChange = (filter) => {
         setTimeFilter(filter)
     }
+
+    // Filter jobs based on selected job type
+    const filterJobsByType = (type) => {
+        setSelectedJobType(type);
+        if (type) {
+            const filtered = jobs.filter(job => (job.contract_time || job.contract_type) === type);
+            setFilteredJobs(filtered);
+        } else {
+            setFilteredJobs(jobs); // Reset to all jobs if no type is selected
+        }
+    };
 
     return (
         <div className="container">
@@ -143,6 +155,7 @@ const Main = () => {
                 <Filters
                     handleTimeFilterChange = {handleTimeFilterChange}
                     jobTypes = {jobTypes}
+                    filterJobsByType={filterJobsByType}
                 />
             </div>
         </div>
