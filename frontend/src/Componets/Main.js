@@ -105,7 +105,7 @@ const Main = () => {
                             <p className="loading_message">Loading, please wait...</p>
                         ) : (
                             <div className="job-cards">
-                                {jobs.map((job, index) => {
+                                {filteredJobs.map((job, index) => {
                                     const {
                                         company: { display_name },
                                         created,
