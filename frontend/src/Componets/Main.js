@@ -1,22 +1,23 @@
-import Filters from "./Filters";
+// components/Main.js
+import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
-import { useState, useEffect } from "react";
+import Filters from "./Filters"; // Your Filters component
 
-const Main = () => {
+const Main = ({ toggleSidebar }) => { // Accept toggleSidebar prop from Layout.js
+    // All your existing state variables remain here
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [selectedJobType, setSelectedJobType] = useState("");
     const [jobs, setJobs] = useState([]);
     const [timeFilter, setTimeFilter] = useState("");
     const [jobTypes, setJobTypes] = useState([]);
-    // NEW STATE for Experience Filter
     const [selectedExperience, setSelectedExperience] = useState("");
     const [entryInfo, setEntryInfo] = useState({
         firstInput: "",
         secondInput: ""
     });
-    // State to track if an initial fetch has happened
     const [initialFetchDone, setInitialFetchDone] = useState(false);
 
+    // Removed: isSidebarOpen state from here, it belongs in Layout.js now.
 
     const handleInputs = (e) => {
         const { name, value } = e.target;
@@ -27,7 +28,6 @@ const Main = () => {
     };
 
     const fetchJobs = async (what = entryInfo.firstInput, where = entryInfo.secondInput) => {
-        // Use provided arguments or current state for flexibility
         try {
             const response = await fetch(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=b602d1c4&app_key=9d5c5da0fa724f9c43233223ec49ed77&results_per_page=9&what=${what}&where=${where}`);
             if (!response.ok) {
@@ -38,7 +38,7 @@ const Main = () => {
             console.log(data.results);
 
             const types = Array.from(new Set(data.results.map(job => job.contract_time || job.contract_type)));
-            setJobTypes(types.filter(Boolean)); // Filter out any null/undefined types
+            setJobTypes(types.filter(Boolean));
 
         } catch (error) {
             console.error('Error fetching jobs:', error);
@@ -47,87 +47,60 @@ const Main = () => {
         }
     };
 
-    // --- EFFECT FOR INITIAL DEFAULT SEARCH ---
+    // Effect for initial default search
     useEffect(() => {
-        // Only run this effect once on mount and if initial fetch hasn't happened
         if (!initialFetchDone) {
-            // Set default search terms
             setEntryInfo({
-                firstInput: "developer", // Default job keyword
-                secondInput: "london"    // Default location
+                firstInput: "developer",
+                secondInput: "london"
             });
-            // Fetch jobs with default terms. Pass them directly to avoid state lag.
             fetchJobs("developer", "london");
-            setInitialFetchDone(true); // Mark initial fetch as done
+            setInitialFetchDone(true);
         }
-    }, [initialFetchDone]); // Dependency: initialFetchDone to prevent re-running
+    }, [initialFetchDone]);
 
-
-    // --- EFFECT FOR REACTING TO SEARCH BAR INPUT CHANGES ---
-    // This effect runs when entryInfo changes (triggered by SearchBar's inputs or initial fetch)
+    // Effect for reacting to search bar input changes
     useEffect(() => {
-        // Only trigger fetch if the user has provided input or it's the initial default search
-        // and if it's not the first render (handled by initialFetchDone check in the other useEffect)
         if (entryInfo.firstInput || entryInfo.secondInput) {
-             // To prevent double fetch on initial load (if default search is set via setEntryInfo)
-             // this useEffect will be triggered by setEntryInfo, so we need to be careful.
-             // The `initialFetchDone` flag helps ensure `WorkspaceJobs` is called only once for defaults.
-             // For subsequent user searches, this effect correctly triggers.
-             // You could also add a ref for more fine-grained control:
-             // const isFirstRender = useRef(true);
-             // useEffect(() => {
-             //   if (isFirstRender.current) {
-             //     isFirstRender.current = false;
-             //     return;
-             //   }
-             //   // ... normal fetchJobs logic
-             // }, [entryInfo])
-            if (initialFetchDone) { // Only fetch if initial load is done OR if user actively typed
+            if (initialFetchDone) {
                 fetchJobs(entryInfo.firstInput, entryInfo.secondInput);
             }
         }
-    }, [entryInfo.firstInput, entryInfo.secondInput]); // Dependencies for user initiated searches
+    }, [entryInfo.firstInput, entryInfo.secondInput, initialFetchDone]);
 
-
-    // --- EFFECT FOR COMBINED FILTERING LOGIC ---
+    // Effect for combined filtering logic
     useEffect(() => {
         let currentFilteredJobs = [...jobs];
 
-        // 1. Apply Time Filter
+        // Apply Time Filter
         if (timeFilter) {
             const now = new Date().getTime();
             currentFilteredJobs = currentFilteredJobs.filter(job => {
                 const jobTime = new Date(job.created).getTime();
                 const timeDifference = now - jobTime;
-
                 switch (timeFilter) {
-                    case "today":
-                        return timeDifference <= 24 * 60 * 60 * 1000;
-                    case "week":
-                        return timeDifference <= 7 * 24 * 60 * 60 * 1000;
-                    case "month":
-                        return timeDifference <= 30 * 24 * 60 * 60 * 1000;
-                    default:
-                        return true;
+                    case "today": return timeDifference <= 24 * 60 * 60 * 1000;
+                    case "week": return timeDifference <= 7 * 24 * 60 * 60 * 1000;
+                    case "month": return timeDifference <= 30 * 24 * 60 * 60 * 1000;
+                    default: return true;
                 }
             });
         }
 
-        // 2. Apply Job Type Filter
+        // Apply Job Type Filter
         if (selectedJobType) {
             currentFilteredJobs = currentFilteredJobs.filter(job =>
                 (job.contract_time || job.contract_type) === selectedJobType
             );
         }
 
-        // 3. Apply Experience Filter (NEW LOGIC)
+        // Apply Experience Filter
         if (selectedExperience) {
             const experienceKeywords = {
                 "entry": ["entry-level", "junior", "grad", "trainee"],
                 "junior": ["junior", "jr", "associate"],
                 "senior": ["senior", "sr", "lead", "principal", "staff", "architect"]
             };
-
             const keywords = experienceKeywords[selectedExperience.toLowerCase()];
             if (keywords) {
                 currentFilteredJobs = currentFilteredJobs.filter(job => {
@@ -141,8 +114,7 @@ const Main = () => {
         }
 
         setFilteredJobs(currentFilteredJobs);
-    }, [jobs, selectedJobType, timeFilter, selectedExperience]); // Add selectedExperience to dependencies
-
+    }, [jobs, selectedJobType, timeFilter, selectedExperience]);
 
     const handleTimeFilterChange = (filter) => {
         setTimeFilter(filter);
@@ -152,108 +124,118 @@ const Main = () => {
         setSelectedJobType(type);
     };
 
-    // NEW HANDLER for Experience Filter
     const handleExperienceFilterChange = (experience) => {
         setSelectedExperience(experience);
     };
 
+    // Removed: toggleSidebar function from here, it belongs in Layout.js now.
+
     const getJobType = (job) => {
         const type = job.contract_time || job.contract_type;
         switch (type) {
-            case "full_time":
-                return "Fulltime";
-            case "permanent":
-                return "Permanent";
-            case "remote":
-                return "Remote";
-            case "contract":
-                return "Contract";
-            default:
-                return type ? type.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : "Read in details";
+            case "full_time": return "Fulltime";
+            case "permanent": return "Permanent";
+            case "remote": return "Remote";
+            case "contract": return "Contract";
+            default: return type ? type.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : "Read in details";
         }
     };
 
     return (
-        <div className="container">
-            <div className="main-data">
-                <SearchBar
-                    fetchJobs={fetchJobs}
-                    entryInfo={entryInfo}
-                    handleInputs={handleInputs}
-                />
+        // This is now the main content wrapper (formerly 'content-area' in CSS)
+        // and its class is 'main-content-wrapper' as per our CSS
+        <div className="main-content-wrapper">
 
-                <div className="content">
+            {/* Search Bar Component */}
+            <SearchBar
+                fetchJobs={fetchJobs}
+                entryInfo={entryInfo}
+                handleInputs={handleInputs}
+                toggleSidebar={toggleSidebar} // Pass toggleSidebar down to SearchBar for the mobile menu button
+            />
+
+            {/* This div arranges the job listings and filters side-by-side on desktop
+                and stacks them vertically on smaller screens.
+                It's styled by the '.job-listings-and-filters-area' CSS class */}
+            <div className="job-listings-and-filters-area">
+                {/* The main data section for job listings (left side on desktop) */}
+                <div className="main-data">
                     <div className="header">
                         <h4><span>{filteredJobs ? filteredJobs.length : 0}</span> opportunities matching your skills.</h4>
                     </div>
-                    {
-                        (!jobs || jobs.length === 0) ? (
-                            <p className="loading_message">
-                                {initialFetchDone && (!entryInfo.firstInput && !entryInfo.secondInput) ? "No jobs found. Please enter keywords and location to search for jobs." : "Loading, please wait..."}
-                            </p>
-                        ) : (
-                            filteredJobs.length === 0 ? (
-                                <p className="loading_message">No jobs match your current filter selections. Try adjusting the filters.</p>
+                    {/* The scrollable content area for job cards */}
+                    <div className="content">
+                        {/* Conditional rendering for loading, no jobs, or job cards */}
+                        {
+                            (!jobs || jobs.length === 0) ? (
+                                <p className="loading_message">
+                                    {initialFetchDone && (!entryInfo.firstInput && !entryInfo.secondInput) ? "No jobs found. Please enter keywords and location to search for jobs." : "Loading, please wait..."}
+                                </p>
                             ) : (
-                                <div className="job-cards">
-                                    {filteredJobs.map((job, index) => {
-                                        const {
-                                            company: { display_name },
-                                            created,
-                                            redirect_url,
-                                            title,
-                                            location: { display_name: locationName },
-                                            description,
-                                        } = job;
+                                filteredJobs.length === 0 ? (
+                                    <p className="loading_message">No jobs match your current filter selections. Try adjusting the filters.</p>
+                                ) : (
+                                    <div className="job-cards">
+                                        {/* You're rendering the job cards directly here, which is fine!
+                                            If you had a separate <Content /> component, you'd pass filteredJobs to it. */}
+                                        {filteredJobs.map((job, index) => {
+                                            const {
+                                                company: { display_name },
+                                                created,
+                                                redirect_url,
+                                                title,
+                                                location: { display_name: locationName },
+                                                description,
+                                            } = job;
 
-                                        return (
-                                            <div className="card" key={job.id || index}>
-                                                <div className="card-header">
-                                                    <div className="job-info">
-                                                        <div>
-                                                            <h5>
-                                                                {display_name}
-                                                                <span> | Posted on {new Date(created).toLocaleString()}</span>
-                                                            </h5>
-                                                            <a href={redirect_url} target="_blank" rel="noopener noreferrer">
-                                                                {title}
-                                                            </a>
-                                                            <p>{locationName}</p>
+                                            return (
+                                                <div className="card" key={job.id || index}>
+                                                    <div className="card-header">
+                                                        <div className="job-info">
+                                                            <div>
+                                                                <h5>
+                                                                    {display_name}
+                                                                    <span> | Posted on {new Date(created).toLocaleString()}</span>
+                                                                </h5>
+                                                                <a href={redirect_url} target="_blank" rel="noopener noreferrer">
+                                                                    {title}
+                                                                </a>
+                                                                <p>{locationName}</p>
+                                                            </div>
                                                         </div>
+                                                        <i className='bx bx-bookmarks' aria-hidden="true"></i>
                                                     </div>
-                                                    <i className='bx bx-bookmarks' aria-hidden="true"></i>
+                                                    <div className="card-tags">
+                                                        <a href={redirect_url} target="_blank" rel="noopener noreferrer">
+                                                            {getJobType(job)}
+                                                        </a>
+                                                    </div>
+                                                    <div className="card-desc">
+                                                        {description && description.length > 200 ? `${description.substring(0, 200)}...` : description}
+                                                    </div>
                                                 </div>
-                                                <div className="card-tags">
-                                                    <a href={redirect_url} target="_blank" rel="noopener noreferrer">
-                                                        {getJobType(job)}
-                                                    </a>
-                                                </div>
-                                                <div className="card-desc">
-                                                    {description && description.length > 200 ? `${description.substring(0, 200)}...` : description}
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                )
                             )
-                        )
-                    }
+                        }
+                    </div>
                 </div>
-            </div>
 
-            <div className="main">
+                {/* The Filters section (right side on desktop) */}
+                {/* Ensure the outermost div of your Filters component has the 'filters-section' class */}
                 <Filters
                     handleTimeFilterChange={handleTimeFilterChange}
                     jobTypes={jobTypes}
                     filterJobsByType={filterJobsByType}
                     selectedJobType={selectedJobType}
-                    timeFilter={timeFilter} // Pass timeFilter for radio 'checked' state
-                    // NEW PROPS for Experience Filter
+                    timeFilter={timeFilter}
                     selectedExperience={selectedExperience}
                     handleExperienceFilterChange={handleExperienceFilterChange}
                 />
-            </div>
-        </div>
+            </div> {/* End of job-listings-and-filters-area */}
+        </div> // End of main-content-wrapper
     );
 };
 

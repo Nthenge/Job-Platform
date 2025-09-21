@@ -1,39 +1,40 @@
 import myImage from "../Images/me.jpg";
-import { BrowserRouter as Link } from "react-router-dom";
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${isSidebarOpen ? 'active' : ''}`}>
             <div className="title_Jobs">
-                <Link className = "a" to="#">JOBS</Link>
+                <button className="a">JOBS</button>
+                <button className="sidebar-close-btn" onClick={toggleSidebar}>
+                    <i className='bx bx-x'></i>
+                </button>
             </div>
 
             <div className="side-nav">
-
                 <div className="item">
                     <i className='bx bx-search-alt-2'></i>
-                    <Link className = "a" to="#">Home</Link>
+                    <a className="a" href="#">Home</a>
                 </div>
 
                 <div className="item">
                     <i className='bx bx-notification'></i>
-                    <Link className = "a" to="#">Notifications</Link>
+                    <a className="a" href="#">Notifications</a>
                 </div>
 
                 <div className="item">
                     <i className='bx bx-briefcase' ></i>
-                    <Link className = "a" to="#">My Works</Link>
+                    <a className="a" href="#">My Works</a>
                 </div>
 
                 <div className="item">
                     <i className='bx bx-bookmarks'></i>
-                    <Link className = "a" to="#">Saved Jobs</Link>
+                    <a className="a" href="#">Saved Jobs</a>
                 </div>
             </div>
 
             <div className="side-profile">
                 <div className="info">
-                    <img src={myImage} alt="Abraham"/>
-                    <br/>
+                    <img src={myImage} alt="Abraham" />
+                    <br />
                     <a href="#">Abraham.com</a>
                 </div>
 
@@ -58,11 +59,11 @@ const Sidebar = () => {
                 <div className="sidebar-btn">
                     <button>View Profile</button>
                 </div>
-            
+
             </div>
 
         </div>
     )
 }
 
-export default Sidebar
+export default Sidebar;
